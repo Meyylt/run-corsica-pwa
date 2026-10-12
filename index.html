@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RunCorse — Gestionnaire d'entraînement</title>
+  <meta name="description" content="Carnet d'entraînement sportif installable, utilisable hors ligne. Suivez vos courses." />
+  
+  <link rel="canonical" href="http://localhost:3000/" />
+  <link rel="alternate" type="text/markdown" href="/notes.md" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#16a34a">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+  <meta property="og:title" content="RunCorse — Gestionnaire d'entraînement" />
+  <meta property="og:description" content="Carnet d'entraînement sportif installable, utilisable hors ligne." />
+  <meta property="og:image" content="http://localhost:3000/icons/icon-512.png" />
+  <meta property="og:url" content="http://localhost:3000/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "RunCorse",
+    "applicationCategory": "HealthAndFitnessApplication",
+    "operatingSystem": "Any",
+    "url": "http://localhost:3000/",
+    "description": "Carnet d'entraînement sportif installable et utilisable hors ligne."
+  }
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/idb@8/build/umd.js"></script>
+</head>
+<body>
+  <main>
+    <h1>RunCorse</h1>
+    <p>Carnet d'entraînement installable, utilisable hors ligne et synchronisé.</p>
+    
+    <div id="update-banner" style="display: none; background-color: #3b82f6; color: white; padding: 12px; border-radius: 10px; text-align: center; margin-bottom: 15px; font-weight: bold;">
+      🚀 Une nouvelle version est prête ! 
+      <button id="btn-update" type="button" style="background-color: white; color: #3b82f6; padding: 6px 12px; margin-left: 10px; font-size: 14px; border: none; border-radius: 6px; cursor: pointer;">Mettre à jour</button>
+    </div>
+
+    <div id="offline-banner" style="display: none;">
+      📴 Mode hors ligne — vos actions seront sauvegardées.
+    </div>
+
+    <form id="run-form">
+      <label for="run-input">Nouvel entraînement</label>
+      <input id="run-input" aria-label="Nouvel entraînement" placeholder="Ex: Footing 10km" required>
+      <button type="submit">Ajouter</button>
+    </form>
+
+    <ul id="runs-list">
+      <li data-seed>Exemple : Footing 5km - Route des Sanguinaires</li>
+      <li data-seed>Exemple : Trail 15km - Vallée de la Restonica</li>
+      <li data-seed>Exemple : Fractionné 10x400m sur piste</li>
+    </ul>
+
+    <br>
+    <button id="btn-geoloc" type="button">📍 Mémoriser ma position de départ</button>
+    <p id="geoloc-status"></p>
+
+    <br>
+    <button id="btn-camera" type="button">📷 Afficher la caméra</button>
+    <video id="camera-stream" autoplay playsinline style="width: 100%; border-radius: 10px; display: none; margin-top: 10px;"></video>
+    <button id="btn-capture" type="button" style="display: none; background-color: #f59e0b; width: 100%; margin-top: 10px; color: white; font-weight: bold; border: none; padding: 14px; border-radius: 10px;">📸 Prendre la photo</button>
+    <canvas id="camera-canvas" style="display: none;"></canvas>
+    <img id="photo-result" style="width: 100%; border-radius: 10px; display: none; margin-top: 10px; border: 3px solid #16a34a;" alt="Photo capturée">
+    <p id="camera-status"></p>
+  </main>
+  <script src="app.js" type="module"></script>
+</body>
+</html>

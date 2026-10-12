@@ -1,0 +1,7 @@
+# RunCorse
+> Carnet d'entraînement sportif installable, utilisable hors ligne.
+> Projet du cours M2 DFS, Università di Corsica.
+## Contenu
+- [Entraînements publics en Markdown](http://localhost:3000/notes.md)
+## Technique
+- Vanilla : Service Worker, API Cache, IndexedDB, Web App Manifest
